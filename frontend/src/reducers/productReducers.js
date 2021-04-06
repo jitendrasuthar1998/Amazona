@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import { PRODUCT_DETAILS_FAIL, PRODUCT_DETAILS_REQUEST, PRODUCT_DETAILS_SUCCESS, PRODUCT_LIST_FAIL, PRODUCT_LIST_REQUEST, PRODUCT_LIST_SUCCESS } from "../constants/productConstants";
+=======
+import { PRODUCT_LIST_FAIL, PRODUCT_LIST_REQUEST, PRODUCT_LIST_SUCCESS } from "../constants/productConstants";
+>>>>>>> 6526f467dae6493dcdebb91db84a0c55144f0f8f
 
 export const productListReducer = (state = { products: [] }, action) => {
   switch (action.type) {
@@ -14,6 +18,7 @@ export const productListReducer = (state = { products: [] }, action) => {
     default:
       return state;       
   }
+<<<<<<< HEAD
 };
 
 export const productDetailsReducer = ( state = { product: {}, loading: true}, action) =>
@@ -32,4 +37,6 @@ export const productDetailsReducer = ( state = { product: {}, loading: true}, ac
   default:
     return state;
  } 
+=======
+>>>>>>> 6526f467dae6493dcdebb91db84a0c55144f0f8f
 }
