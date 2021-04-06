@@ -17,16 +17,18 @@ function App() {
           <a href="/signin">Sign In</a>
         </div>
       </header>
+      
       <main>
-
-      <Route path="/" component={HomeScreen} exact></Route>
+<Route path="/" component={HomeScreen} exact></Route>
 
 <Route path="/product/:id" component={ProductScreen}></Route> 
-        
-        
+          
       </main>
+      
       <footer className="row center">All right reserved</footer>
+    
     </div>
+    
     </BrowserRouter>
   );
 }

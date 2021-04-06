@@ -25,7 +25,6 @@ export default function HomeScreen() {
     <div className="row center">
             {
               //because we are using products from backend
-
               products.map(product => (
                 <Product key={product._id } product={product}></Product>   
               ))
