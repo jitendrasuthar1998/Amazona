@@ -2,21 +2,24 @@ import { CART_ADD_ITEM } from "../constants/cartConstants";
 
 import Axios from 'axios';
 
+//addToCart action for adding products to cart..
+
 export const addToCart = (productId, qty) => async(dispatch, getState) => {
   
-  const { data } = await Axios.get(`/api/products/${productId}`);
+  const { data } = await Axios.get(`/api/products/${productId}`);  //assigning selected product information to data object.
 
   dispatch({
-    type: CART_ADD_ITEM, 
-    payload: {
-      name: data.name,
-      image: data.image,
-      price: data.price,
-      countInStock: data.countInStock,
-      product: data._id,
-      qty,
+    type: CART_ADD_ITEM,
+
+    payload: {              //this payload send the product details to cart..
+      name: data.name,          //getting the name of product from fetched data object
+      image: data.image,        //getting the image of product from fetched data object
+      price: data.price,        //getting the price of product from fetched data object
+      countInStock: data.countInStock,      //getting the countInStock of product from fetched data object
+      product: data._id,            //getting the id of product from fetched data object
+      qty,                          ////getting the quantity of product from fetched data object
     },
   });
 
-  localStorage.setItem('cartItems', JSON.stringify(getState().cart.cartItems));
+  localStorage.setItem('cartItems', JSON.stringify(getState().cart.cartItems));  //keep save product after refreshing the page.
 };

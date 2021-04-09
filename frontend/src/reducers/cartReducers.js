@@ -4,7 +4,10 @@ export const cartReducer = (state = { cartItems:[] }, action) =>{
   switch(action.type) {
     case CART_ADD_ITEM:
       const item = action.payload;
-      const existItem = state.cartItems.find(x => x.product === item.product);
+
+      //check if added product already exist in cart on not.
+
+      const existItem = state.cartItems.find((x) => x.product === item.product);
 
       if(existItem){
         return {
@@ -15,7 +18,9 @@ export const cartReducer = (state = { cartItems:[] }, action) =>{
       }
       else {
         return {
-          ...state, cartItems: [...state.cartItems, item]
+          ...state, 
+          error: '', 
+          cartItems: [...state.cartItems, item]
         };
       }
     default: 
