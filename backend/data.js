@@ -19,7 +19,6 @@ const data = {
 
   products: [
     {
-      _id: '1',
       name: 'Nike Slim Shirt',
       category: 'Shirts',
       image: '/images/p1.jpg',
@@ -33,7 +32,6 @@ const data = {
 
 
     {
-      _id: '2',
       name: 'Adidas fit Shirt',
       category: 'Shirts',
       image: '/images/p2.jpg',
@@ -46,7 +44,6 @@ const data = {
     },
 
     {
-      _id: '3',
       name: 'Lacoste free Shirt',
       category: 'Shirts',
       image: '/images/p3.jpg',
@@ -59,7 +56,6 @@ const data = {
     },
 
     {
-      _id: '4',
       name: 'Nike Slim Paints',
       category: 'Paints',
       image: '/images/p4.jpg',
@@ -72,7 +68,6 @@ const data = {
     },
 
     {
-      _id: '5',
       name: 'Puma Slim paints',
       category: 'Paints',
       image: '/images/p5.jpg',
@@ -85,7 +80,6 @@ const data = {
     },
 
     {
-      _id: '6',
       name: 'Adidas fit pant',
       category: 'Pants',
       image: '/images/p6.jpg',
