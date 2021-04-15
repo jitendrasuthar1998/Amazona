@@ -30,6 +30,6 @@ userRouter.post('/signin', expressAsyncHandler (async(req, res)=> {
   else{
     res.status(404).send( {message: 'Invalid emal or password'} );
   }
-}))
+}));
 
 export default userRouter;
