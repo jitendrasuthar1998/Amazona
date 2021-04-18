@@ -44,13 +44,13 @@ export default function SigninScreen(props) {
 
       <div>
         <label htmlFor="email">Email Address:</label>
-        <input type="email" id="email" placeholder="Enter your email" onChange={(e)=>setEmail(e.target.value)}>
+        <input type="email" id="email" placeholder="Enter your email" required onChange={(e)=>setEmail(e.target.value)}>
         </input>
       </div>
 
       <div>
         <label htmlFor="password">Enter your password</label>
-        <input type="password" id="password" placeholder="Enter your password" onChange={(e)=>setPassword(e.target.value)}>
+        <input type="password" id="password" placeholder="Enter your password" required onChange={(e)=>setPassword(e.target.value)}>
         </input>
       </div>
 

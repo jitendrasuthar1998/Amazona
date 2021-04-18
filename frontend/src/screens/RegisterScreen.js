@@ -24,6 +24,9 @@ export default function RegisterScreen(props) {
   const dispatch = useDispatch();
   const submitHandler = (e) => {
     e.preventDefault();
+
+    if(password)
+
     if(password !== confirmPassword){
       alert('Password and Confirm password are not match')
     } else{
@@ -49,25 +52,25 @@ export default function RegisterScreen(props) {
 
       <div>
         <label htmlFor="name">Name:</label>
-        <input type="text" id="name" placeholder="Enter your name" onChange={(e)=>setName(e.target.value)}>
+        <input type="text" id="name" placeholder="Enter your name" required="true" onChange={(e)=>setName(e.target.value)}>
         </input>
       </div>
 
       <div>
         <label htmlFor="email">Email Address:</label>
-        <input type="email" id="email" placeholder="Enter your email" onChange={(e)=>setEmail(e.target.value)}>
+        <input type="email" id="email" placeholder="Enter your email" required="true" onChange={(e)=>setEmail(e.target.value)}>
         </input>
       </div>
 
       <div>
         <label htmlFor="password">Enter your password</label>
-        <input type="password" id="password" placeholder="Enter your password" onChange={(e)=>setPassword(e.target.value)}>
+        <input type="password" id="password" placeholder="Enter your password" required="true" onChange={(e)=>setPassword(e.target.value)}>
         </input>
       </div>
 
       <div>
         <label htmlFor="confirmPassword">Confirm Password</label>
-        <input type="password" id="confirmPassword" placeholder="Re-Enter your password" onChange={(e)=>setConfirmPassword(e.target.value)}>
+        <input type="password" id="confirmPassword" placeholder="Re-Enter your password" required="true" onChange={(e)=>setConfirmPassword(e.target.value)}>
         </input>
       </div>
 
