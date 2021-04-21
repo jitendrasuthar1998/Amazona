@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 
-export const orderSchema = new mongoose.Schema({
+export const orderSchema = new mongoose.Schema(
+  {
   orderItems: [
     {
       name: { type : String, required: true},
@@ -14,7 +15,6 @@ export const orderSchema = new mongoose.Schema({
       },
     },
   ],
-
   shippingAddress: {
     fullName: { type: String, required: true},
     address: { type: String, required: true},
@@ -22,7 +22,6 @@ export const orderSchema = new mongoose.Schema({
     postalCode: { type: String, required: true},
     country: { type: String, required: true},
   },
-
   paymentMethod: { type: String, required: true },
   itemsPrice: { type: Number , required: true},
   shippingPrice: { type: Number, required: true},
