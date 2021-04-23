@@ -8,7 +8,7 @@ import { generateToken } from '../utils.js';
 const userRouter = express.Router();
 
 userRouter.get(`/seed`, async (req, res ) => {
-  await User.deleteMany({});
+  //await User.deleteMany({});
   const createdUsers = await User.insertMany(data.users);
   res.send({ createdUsers });
 });
