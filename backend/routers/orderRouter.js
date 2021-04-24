@@ -28,6 +28,8 @@ expressAsyncHandler(async(req, res) =>{
 })
 );
 
+//api for getting order details for mongoDb database
+
 orderRouter.get('/:id', 
 isAuth,
 expressAsyncHandler( async (req, res) => {
