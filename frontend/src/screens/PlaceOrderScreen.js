@@ -75,27 +75,26 @@ export default function PlaceOrderScreen(props) {
                 <h1>Order-Items</h1>
                 
                 <ul>
-            {cart.cartItems.map((item) => (
-              <li key={item.product}>
-                <div className="row">
-                  <div>
-                    <img
-                      src={item.image}
-                      alt={item.name}
-                      className="small"
-                    ></img>
-                  </div>
-                  <div className="min-30">
-                    <Link to={`/product/${item.product}`}>{item.name}</Link>
-                  </div>
+                  {cart.cartItems.map((item) => (
+                    <li key={item.product}>
+                      <div className="row">
+                        <div>
+                          <img
+                            src={item.image}
+                            alt={item.name}
+                            className="small"
+                          ></img>
+                        </div>
+                        <div className="min-30">
+                          <Link to={`/product/${item.product}`}>{item.name}</Link>
+                        </div>
                   
-                  <div> {item.qty} x ${item.price} = ${item.qty * item.price }</div>
+                        <div> {item.qty} x ${item.price} = ${item.qty * item.price }</div>
                   
-                </div>
-              </li>
-            ))}
-          </ul>
-
+                      </div>
+                    </li>
+                  ))}
+                </ul>
 
               </div>
             </li>
@@ -130,8 +129,8 @@ export default function PlaceOrderScreen(props) {
               <li>
                 <div className="row">
                   <div>  
-                  <strong>Total-Price:</strong>
-                   </div> 
+                    <strong>Total-Price:</strong>
+                  </div> 
                   <div> 
                     <strong>
                     ${cart.totalPrice.toFixed(2)}
@@ -146,15 +145,11 @@ export default function PlaceOrderScreen(props) {
               </li>
 
               {loading && <LoadingBox></LoadingBox>}
-              {error && <MessageBox variant='danger'>{error}</MessageBox>}
+              {error && <MessageBox variant="danger">{error}</MessageBox>}
             </ul>
           </div>
-
-
         </div>
       </div>
-
-
     </div>
   )
-}
+};

@@ -9,9 +9,13 @@ export default function CartScreen(props) {
   const qty = props.location.search
     ? Number(props.location.search.split('=')[1])
     : 1;
-  const cart = useSelector((state) => state.cart);
-  const { cartItems, error } = cart;
+
+
+  const cart = useSelector((state) => state.cart);  //getting cart state from redux store
+  const { cartItems, error } = cart;   //from that cart state, getting cartItems and error
   const dispatch = useDispatch();
+
+
   useEffect(() => {
     if (productId) {
       dispatch(addToCart(productId, qty));
@@ -19,14 +23,13 @@ export default function CartScreen(props) {
   }, [dispatch, productId, qty]);
 
   const removeFromCartHandler = (id) => {
-    // delete action
-    dispatch(removeFromCart(id))
-    
+      dispatch(removeFromCart(id));     // to remove product from cart
   };
 
   const checkoutHandler = () => {
     props.history.push('/signin?redirect=shipping');
   };
+
   return (
     <div className="row top">
       <div className="col-2">
