@@ -47,4 +47,4 @@ export const detailsOrder = (orderId) => async (dispatch, getState) => {
     error.message;
     dispatch({type: ORDER_DETAILS_FAIL, payload: message});
   }
-}
+};
