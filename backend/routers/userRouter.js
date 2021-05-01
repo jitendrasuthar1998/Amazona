@@ -7,6 +7,12 @@ import { generateToken } from '../utils.js';
 
 const userRouter = express.Router();
 
+userRouter.get('/', expressAsyncHandler( async(req, res)=>{
+  const users = await User.find({});
+  res.send(users);
+})
+);
+
 userRouter.get(`/seed`, async (req, res ) => {
   //await User.deleteMany({});
   const createdUsers = await User.insertMany(data.users);
@@ -48,6 +54,16 @@ userRouter.post('/register', expressAsyncHandler (async(req, res)=>{
       isAdmin: createdUser.isAdmin,
       token: generateToken(createdUser), 
     });
+})
+);
+
+userRouter.get('/:id', expressAsyncHandler (async(req, res) => {
+  const user = await User.findById(req.params.id);
+  if(user) {
+    res.send(user);
+  } else {
+    res.status(404).send({message: 'User not found'});
+  }
 })
 );
 
