@@ -58,7 +58,6 @@ function App() {
                    <Link to="/profile">User Profile</Link> 
                    </li>
 
-
                    <li>
                    <Link to="/orderhistory">Order History</Link> 
                    </li>
@@ -76,6 +75,27 @@ function App() {
                 <Link to="/signin">Sign In</Link>
               )
             }
+            { userInfo && userInfo.isAdmin && (
+              <div className="dropdown">
+                <Link to ="#admin">
+                Admin {' '} <i className="fa fa-caret-down"></i>  
+                </Link>
+                <ul className ="dropdown-content">
+                  <li>
+                    <Link to ="/dashboard"> Dashboard</Link>
+                  </li>
+                  <li>
+                    <Link to ="/productlist">Products</Link>
+                  </li>
+                  <li>
+                    <Link to ="/orderlist">Orders</Link>
+                  </li>
+                  <li>
+                    <Link to ="/userlist">Users</Link>
+                  </li>
+                </ul> 
+              </div>
+            ) }
     
           </div>
         </header>
