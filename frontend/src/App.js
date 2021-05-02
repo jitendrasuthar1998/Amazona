@@ -106,7 +106,7 @@ function App() {
         
             <Route exact path="/" component={HomeScreen} ></Route>
 
-            <Route path="/product/:id" component={ProductScreen}></Route> 
+            <Route path="/product/:id" component={ProductScreen} exact></Route> 
           
             <Route path="/cart/:id?" component={CartScreen}></Route>
 
