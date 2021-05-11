@@ -6,13 +6,16 @@ import { isAuth, isAdmin } from '../utils.js';
 
 const productRouter = express.Router();
 
+//router to get all the products which are available in store and send it to frontend api
+
 productRouter.get('/', expressAsyncHandler( async(req, res)=>{
   const products = await Product.find({});
   res.send(products);
 })
 );
 
-//api to add products to mongoDB database
+//router to add products to mongoDB database
+
 productRouter.get('/seed', expressAsyncHandler(async (req, res) => {
   // await Product.remove({});
 const createdProducts = await Product.insertMany(data.products);
@@ -20,7 +23,8 @@ res.send({ createdProducts });
 })
 );
 
-//api for product details
+//router to get particular product details from backend or from database and send it to frontend when it calls
+
 productRouter.get('/:id', expressAsyncHandler( async (req, res) => {
   const product = await Product.findById(req.params.id);
 
@@ -33,6 +37,8 @@ productRouter.get('/:id', expressAsyncHandler( async (req, res) => {
   }
 })
 );
+
+//router to create any product to admin and then post it to backend or database from frontend to backend
 
 productRouter.post('/',
 isAuth,
@@ -53,6 +59,8 @@ expressAsyncHandler(async(req, res)=>{
   res.send({ message: 'Product Created', product: createdProduct });
 })
 );
+
+//router to update any product details to admin
 
 productRouter.put('/:id',
 isAuth,
@@ -76,6 +84,8 @@ expressAsyncHandler(async(req,res)=> {
   }
 })
 );
+
+//router to delete any product from database to admin
 
 productRouter.delete('/:id',
 isAuth,

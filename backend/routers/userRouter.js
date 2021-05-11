@@ -7,17 +7,23 @@ import { generateToken, isAuth } from '../utils.js';
 
 const userRouter = express.Router();
 
+//router to get all the users which are available in database
+
 userRouter.get('/', expressAsyncHandler( async(req, res)=>{
   const users = await User.find({});
   res.send(users);
 })
 );
 
+//router to seed users in database from backend
+
 userRouter.get(`/seed`, async (req, res ) => {
   //await User.deleteMany({});
   const createdUsers = await User.insertMany(data.users);
   res.send({ createdUsers });
 });
+
+//router to user to signin into the system
 
 userRouter.post('/signin', expressAsyncHandler (async(req, res)=> {
   const user = await User.findOne({email: req.body.email});
@@ -36,7 +42,10 @@ userRouter.post('/signin', expressAsyncHandler (async(req, res)=> {
   else{
     res.status(404).send( {message: 'Invalid emal or password'} );
   }
-}));
+})
+);
+
+//router for any user to create their account in frontend and send that user information to backend and to database
 
 userRouter.post('/register', expressAsyncHandler (async(req, res)=>{
   const user = new User({
@@ -57,6 +66,8 @@ userRouter.post('/register', expressAsyncHandler (async(req, res)=>{
 })
 );
 
+//router to get particular user id details
+
 userRouter.get('/:id', expressAsyncHandler (async(req, res) => {
   const user = await User.findById(req.params.id);
   if(user) {
@@ -66,6 +77,8 @@ userRouter.get('/:id', expressAsyncHandler (async(req, res) => {
   }
 })
 );
+
+//router for any user to see his profile details
 
 userRouter.put('/profile', isAuth, expressAsyncHandler(async(req, res) => {
   const user = await User.findById(req.user._id);

@@ -5,6 +5,9 @@ import { isAdmin, isAuth } from '../utils.js';
 
 const orderRouter = express.Router();
 
+
+//to get individual user orders details
+
 orderRouter.get('/mine', 
 isAuth, 
 expressAsyncHandler(async(req, res)=> {
@@ -12,6 +15,9 @@ expressAsyncHandler(async(req, res)=> {
   res.send(orders);
 })
 );
+
+
+//router to post order of particular user with some products and user details
 
 orderRouter.post('/',
 isAuth, 
@@ -29,14 +35,13 @@ expressAsyncHandler(async(req, res) =>{
       totalPrice: req.body.totalPrice,
       user: req.user._id,
     });
-
     const createdOrder = await order.save();
     res.status(201).send({message: 'New Order Created', order: createdOrder });
   }
 })
 );
 
-//api for getting order details for mongoDb database
+//router to get recently posted order in database
 
 orderRouter.get('/:id', 
 isAuth,
@@ -51,6 +56,9 @@ expressAsyncHandler( async (req, res) => {
   }
 })
 );
+
+
+//router to get individual order details to pay the order total amount when order is paid then show the payment status to user
 
 orderRouter.put('/:id/pay', 
 isAuth, 
@@ -72,6 +80,8 @@ expressAsyncHandler( async(req, res)=>{
 })
 );
 
+//router to get all the users order details to admin
+
 orderRouter.get('/',
 isAuth,
 isAdmin,
@@ -80,6 +90,8 @@ expressAsyncHandler(async(req, res)=>{
   res.send(orders);
 })
 );
+
+//router to delete any particular order from backend or database
 
 orderRouter.delete('/:id',
 isAuth,
@@ -94,6 +106,8 @@ expressAsyncHandler(async(req, res)=>{
   }
 })
 );
+
+//router to create deliver action to any particular order, and show the status of delivery
 
 orderRouter.put('/:id/deliver',
 isAuth,
