@@ -10,7 +10,11 @@ import MessageBox from '../components/MessageBox';
 
 export default function PlaceOrderScreen(props) {
 
+  console.log('this is place order screen');
+
   const cart = useSelector((state)=>state.cart);
+
+  console.log('the cart is ', cart);
 
   if(!cart.paymentMethod) {
     props.history.push('/payment');
@@ -34,6 +38,7 @@ export default function PlaceOrderScreen(props) {
   const dispatch = useDispatch();
 
   const placeOrderHandler = () => {
+    console.log('place order button clicked');
    dispatch(createOrder({...cart, orderItems: cart.cartItems }));
   };
 

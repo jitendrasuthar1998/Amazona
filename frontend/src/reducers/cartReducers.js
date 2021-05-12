@@ -7,7 +7,10 @@ export const cartReducer = (state = { cartItems:[] }, action) => {
 
       //check if added product already exist in cart on not.
 
+    console.log('product in cart reducer',item);
+
       const existItem = state.cartItems.find((x) => x.product === item.product);
+
 
       if(existItem){
         return {

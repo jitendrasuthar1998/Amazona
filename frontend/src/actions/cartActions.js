@@ -8,6 +8,8 @@ export const addToCart = (productId, qty) => async(dispatch, getState) => {
   
   const { data } = await Axios.get(`/api/products/${productId}`);  //assigning selected product information to data object.
 
+  console.log('product details comming from api when add to cart button clicked', data);
+
   dispatch({
     type: CART_ADD_ITEM,
 

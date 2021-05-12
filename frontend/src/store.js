@@ -19,7 +19,10 @@ const initialState = {
     shippingAddress: localStorage.getItem('shippingAddress') ? JSON.parse( localStorage.getItem('shippingAddress') ) : {},
     paymentMethod : 'Paypal', 
   },
+
 };
+
+console.log('initial state of store',initialState);
 
 const reducer = combineReducers({
    productList: productListReducer,
@@ -40,6 +43,8 @@ const reducer = combineReducers({
    orderDelete: orderDeleteReducer,
    orderDeliver: orderDeliverReducer,
  });   
+
+// console.log('Product in store',productListReducer);
 
  const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose ;
 

@@ -6,6 +6,7 @@ export const productListReducer = (state = { products: [] }, action) => {
       return { loading: true };
     
     case PRODUCT_LIST_SUCCESS:
+    //  console.log('products in reducer',action);
       return { loading: false, products: action.payload };
 
     case PRODUCT_LIST_FAIL:
@@ -21,9 +22,11 @@ export const productDetailsReducer = ( state = { loading: true}, action) =>
  switch(action.type) {
   
   case PRODUCT_DETAILS_REQUEST:
+  //  console.log('product details request in reducer');
     return {loading: true};
   
   case PRODUCT_DETAILS_SUCCESS:
+  //  console.log('product details request success in reducer', action);
     return {loading: false, product: action.payload};
 
   case PRODUCT_DETAILS_FAIL:
