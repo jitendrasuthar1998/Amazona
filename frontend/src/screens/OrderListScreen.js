@@ -40,7 +40,6 @@ export default function OrderListScreen(props) {
       :
       error ? <MessageBox variant="danger">{error}</MessageBox>
       :
-      
       (
         <table className="table">
           <thead>

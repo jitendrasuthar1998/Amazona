@@ -2,12 +2,12 @@
   "name": "amazona",
   "type": "module",
   "version": "1.0.0",
-  "description": "",
+  "description": "it is a demo ecommerce web like amazona",
   "main": "index.js",
   "scripts": {
     "start": "nodemon --watch backend --exec node --experimental-modules backend/server.js"
   },
-  "author": "",
+  "author": "Jitendra",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",

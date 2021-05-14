@@ -18,6 +18,7 @@ import ProfileScreen from './screens/ProfileScreen';
 import RegisterScreen from './screens/RegisterScreen';
 import ShippingAddressScreen from './screens/ShippingAddressScreen';
 import SigninScreen from './screens/SigninScreen';
+import UserListScreen from './screens/UserListScreen';
 
 
 function App() {
@@ -52,7 +53,7 @@ function App() {
               userInfo ?
               (
                 <div className="dropdown">
-                  <Link to="#">{userInfo.name}
+                  <Link to="#">{userInfo.name} {' '}
                     <i className="fa fa-caret-down"></i>
                   </Link>
 
@@ -95,7 +96,7 @@ function App() {
                     <Link to ="/orderlist">Orders</Link>
                   </li>
                   <li>
-                    <Link to ="/userlist">Users</Link>
+                    <Link to ="/userslist">Users</Link>
                   </li>
                 </ul> 
               </div>
@@ -133,6 +134,8 @@ function App() {
             <AdminRoute path="/productlist" component={ProductListScreen}></AdminRoute>
 
             <AdminRoute path="/orderlist" component={OrderListScreen}></AdminRoute>
+
+            <AdminRoute path="/usersList" component={UserListScreen}></AdminRoute>
         </main>
       
         <footer className="row center">All right reserved</footer>

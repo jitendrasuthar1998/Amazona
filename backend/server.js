@@ -16,9 +16,7 @@ app.use(express.json());
 
 app.use(express.urlencoded({extended: true}));
 
-
-mongoose.connect( process.env.MONGO_DB_URL  ,
-{
+mongoose.connect('mongodb://localhost/amazona',{
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
