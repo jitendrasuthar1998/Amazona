@@ -9,14 +9,13 @@ export default function ShippingAddressScreen(props) {
 
   const { userInfo } = userSignin;
   if(!userInfo) {
+    console.log('If userinfo is not signed then redirect user to signin');
     props.history.push('/signin');
   }
 
 
-  const cart = useSelector(state => state.cart);      //getting the state of cart from redux store
-  const { shippingAddress } = cart;                 //from that cart, you are getting shippingAddress information
-
-  console.log(shippingAddress);
+  const cart = useSelector(state => state.cart);      
+  const { shippingAddress } = cart;                 
 
   const [fullName, setFullName] = useState(shippingAddress.fullName);
   const [address, setAddress] = useState(shippingAddress.address);
@@ -25,16 +24,10 @@ export default function ShippingAddressScreen(props) {
   const [country, setCountry] = useState(shippingAddress.country);
   const dispatch = useDispatch();
 
-
   //form handler
   const submitHandler = (e) => {
     e.preventDefault();
-    //Todo : dispatch save shipping action
-
-
-    console.log('shipping button is clicked');
-    dispatch(saveShippingAddress({fullName, address, city, postalCode, country})
-    );
+    dispatch(saveShippingAddress({fullName, address, city, postalCode, country}));
     props.history.push('/payment'); //because of this line you can redirect user to paymentMethod component
   };
   

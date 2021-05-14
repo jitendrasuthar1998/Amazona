@@ -17,10 +17,13 @@ export default function PlaceOrderScreen(props) {
   console.log('the cart is ', cart);
 
   if(!cart.paymentMethod) {
+    console.log('Redirect to payment method if payment has not been selected');
     props.history.push('/payment');
   }
 
   const orderCreate = useSelector((state) => state.orderCreate);
+
+  console.log('OrderCreate is comming from redux store', orderCreate);
 
   const { loading, success, error, order } = orderCreate;
 
@@ -43,9 +46,11 @@ export default function PlaceOrderScreen(props) {
   };
 
   useEffect(()=> {
+    console.log('useEffect method has been called of placeOrderScreen');
     if(success) {
+      console.log('If orderCreate is true then push order to order api');
       props.history.push(`/order/${order._id}`);
-      dispatch({type: ORDER_CREATE_RESET});
+      dispatch({type: ORDER_CREATE_RESET} , console.log('order reset has been called'));
     }
   }, [ dispatch, order, props.history, success]);
 

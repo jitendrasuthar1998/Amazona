@@ -11,9 +11,11 @@ export default function HomeScreen() {
   const productList = useSelector((state) => state.productList);
   const { loading, error, products } = productList;
   
- // console.log(productList);
+  console.log('Products coming from redux store',productList);
 
   useEffect(()=>{
+    console.log('useEffect method has been called of HomeScreen');
+    console.log('calling listProducts action from actions');
     dispatch(listProducts());
   }, [dispatch]);   
 

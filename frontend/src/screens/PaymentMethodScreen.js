@@ -5,8 +5,13 @@ import CheckoutSteps from '../components/CheckoutSteps'
 
 export default function PaymentMethodScreen(props) {
 
+  console.log('This is payment method screen');
+
   const cart = useSelector((state) => state.cart);
   const { shippingAddress } = cart;
+
+  console.log('cart fetched from store', cart);
+  console.log('shipping address fetched from cart and cart from store', shippingAddress);
 
   if(!shippingAddress) {
     props.history.push('/shipping'); 

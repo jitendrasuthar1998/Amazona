@@ -8,26 +8,36 @@ import MessageBox from '../components/MessageBox';
 
 export default function SigninScreen(props) {
 
+  console.log('This is signin screen');
+
   //react hook for setting email and password
   const [email, setEmail] = useState(' ');
   const [password, setPassword] = useState(' ');
 
   const redirect = props.location.search? props.location.search.split('=')[1]: '/';
 
+  console.log('value of redirect is',redirect)
+
   const userSignin = useSelector((state)=> state.userSignin);
   const { userInfo, loading, error } = userSignin;
    
+  console.log('userSignin is comming from redux store', userSignin);
   //submit handler action for signing in user
 
   const dispatch = useDispatch();
   const submitHandler = (e) => {
+    console.log('submitHandler method has been called');
     e.preventDefault();
     dispatch(signin(email, password));
   };
 
 
   useEffect(()=>{
+
+    console.log('useEffect method has been called of SigninScreen');
+
     if(userInfo) {
+      console.log('if userInfo is available then redirect user to redirect', redirect);
       props.history.push(redirect);
     }
   }, [props.history, redirect, userInfo]);

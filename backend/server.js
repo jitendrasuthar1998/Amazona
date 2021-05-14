@@ -7,6 +7,7 @@ import orderRouter from './routers/orderRouter.js';
 import uploadRouter from './routers/uploadRouter.js';
 import path from 'path';
 
+
 dotenv.config();
 
 const app = express();
@@ -15,17 +16,17 @@ app.use(express.json());
 
 app.use(express.urlencoded({extended: true}));
 
-mongoose.connect( process.env.MONGODB_URL || 'mongodb://localhost/amazona',
+
+mongoose.connect( process.env.MONGO_DB_URL  ,
 {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
 });
 
-
 app.use('/api/users', userRouter);
 
-app.use('/api/products', productRouter);
+app.use('/api/products',productRouter);
 
 app.use('/api/orders', orderRouter);
 

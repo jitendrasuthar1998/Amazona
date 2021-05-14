@@ -3,14 +3,16 @@ import { PRODUCT_DELETE_FAIL, PRODUCT_DELETE_REQUEST, PRODUCT_DELETE_SUCCESS, PR
 import Axios from 'axios';
 
 export const listProducts = () => async (dispatch) =>{
+  console.log('listProducts action has been called from actions folder');
   dispatch({
     type: PRODUCT_LIST_REQUEST,
   });
   
   try {
     const { data } = await Axios.get('/api/products');
-   // console.log('data from api',data);
-    dispatch({type: PRODUCT_LIST_SUCCESS, payload: data});
+   console.log('data is comming from api in when listProducts action has been called',data);
+   console.log('product_list_success action has been dispatched from action type of listProducts'); 
+   dispatch({type: PRODUCT_LIST_SUCCESS, payload: data});
   } catch (error) {
     
     dispatch({type: PRODUCT_LIST_FAIL, payload: error.message});

@@ -8,11 +8,19 @@ import { PRODUCT_CREATE_RESET, PRODUCT_DELETE_RESET } from '../constants/product
 
 export default function ProductListScreen(props) {
 
+  console.log('This is product List screen');
+
+  console.log('ProductListScreen props are',props);
+
   const productList = useSelector((state)=> state.productList);
+
+  console.log('Product list comming from redux store are', productList);
 
   const { loading, error, products } = productList;
 
   const productCreate = useSelector((state) => state.productCreate);
+
+  console.log('productCreate comming from redux store', productCreate);
 
   const {
     loading: loadingCreate,
@@ -23,29 +31,39 @@ export default function ProductListScreen(props) {
 
   const productDelete = useSelector((state)=> state.productDelete);
 
+  console.log('productDelete comming from redux store', productDelete);
+
   const { loading: loadingDelete, error: errorDelete, success: successDelete } = productDelete;
 
   const dispatch = useDispatch();
 
   useEffect(()=>{
+    console.log('useEffect method has been called of ProductListScreen');
     if(successCreate){
+      console.log('Product create is ture then dispatch product_create_reset action');
       dispatch({type: PRODUCT_CREATE_RESET});
       props.history.push(`/product/${createdProduct._id}/edit`);
     }
 
     if(successDelete){
+      console.log('If product successDelete is true then dispatch product_delete_reset action');
       dispatch({type: PRODUCT_DELETE_RESET});
     }
     dispatch(listProducts());
+    console.log('listProducts action has been called from actions');
   },[ createdProduct, props.history, dispatch, successCreate, successDelete]);
 
   const createHander = () =>{
+    console.log('CreateHandler has been called');
     dispatch(createProduct());
+    console.log('createProduct action has been called');
   } 
 
   const deleteHandler = (product) => {
+    console.log('Product DeleteHandler has been called');
     if(window.confirm('Are you sure to delete?')){
       dispatch(deleteProduct(product._id));
+      console.log('Delete product action has been called from actions');
     }
   }
 

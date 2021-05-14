@@ -6,9 +6,15 @@ import MessageBox from '../components/MessageBox';
 
 export default function OrderHistoryScreen(props) {
 
+  console.log('This is Order History Screen');
+
   const orderMineList = useSelector(state => state.orderMineList);
 
+  console.log('Mine order list comming from redux store', orderMineList);
+
   const { loading, error, orders } = orderMineList;
+
+  console.log('Orders from orderMineList', orders);
 
   const dispatch = useDispatch();
 

@@ -5,7 +5,7 @@ import { isAdmin, isAuth } from '../utils.js';
 
 const orderRouter = express.Router();
 
-
+//router to get data from database
 //to get individual user orders details
 
 orderRouter.get('/mine', 
@@ -86,7 +86,7 @@ orderRouter.get('/',
 isAuth,
 isAdmin,
 expressAsyncHandler(async(req, res)=>{
-  const orders = await Order.find({}).populate('user','name');
+  const orders = await Order.find({});
   res.send(orders);
 })
 );

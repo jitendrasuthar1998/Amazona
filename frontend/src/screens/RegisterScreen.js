@@ -8,6 +8,10 @@ import MessageBox from '../components/MessageBox';
 
 export default function RegisterScreen(props) {
 
+  console.log('This is RegisterScreen');
+
+  console.log('Props of register screen are ', props);
+
   //react hook for setting email and password
   const [name, setName] = useState(' ');
   const [email, setEmail] = useState(' ');
@@ -19,22 +23,24 @@ export default function RegisterScreen(props) {
   const userRegister = useSelector((state)=> state.userRegister);
   const { userInfo, loading, error } = userRegister;
    
+  console.log('userRegister is comming from redux store', userRegister);
+
   //submit handler action for register user
 
   const dispatch = useDispatch();
   const submitHandler = (e) => {
     e.preventDefault();
 
-    if(password)
-
     if(password !== confirmPassword){
       alert('Password and Confirm password are not match')
     } else{
+      console.log('If password and confrim password matched then dispatch register action');
       dispatch(register(name ,email, password));
     }
   };
 
   useEffect(()=>{
+    console.log('useEffect method has been called');
     if(userInfo) {
       props.history.push(redirect);
     }

@@ -10,13 +10,23 @@ export default function ProductScreen(props) {
   
   const dispatch = useDispatch();
 
-  const productId = props.match.params.id;
-  const [qty,setQty] = useState(1); 
+  console.log('Data in props of ProductScreen',props);  
 
+  const productId = props.match.params.id;
+  
+  console.log('Product id is ', productId);
+
+  const [qty,setQty] = useState(1); 
+  
   const productDetails = useSelector(state => state.productDetails); //getting productDetails state from store
   const{ loading , error, product } = productDetails;
 
+  console.log('Getting product details from store', productDetails);
+
+
   useEffect(() => {
+    console.log('Product id in useEffect is', productId);
+    console.log('Details product action is called');
     dispatch(detailsProduct(productId));
   }, [dispatch, productId]);
   

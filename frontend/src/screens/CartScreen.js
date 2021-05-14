@@ -5,34 +5,35 @@ import { addToCart, removeFromCart, } from '../actions/cartActions';
 import MessageBox from '../components/MessageBox';
 
 export default function CartScreen(props) {
+
   const productId = props.match.params.id;
   const qty = props.location.search
     ? Number(props.location.search.split('=')[1])
     : 1;
 
+  console.log('This is cart screen');
+  console.log('Props in cart', props);
+  console.log('Product id from url', productId);
+  console.log('Product quantity from url', qty);
 
   const cart = useSelector((state) => state.cart);  //getting cart state from redux store
   const { cartItems, error } = cart;   //from that cart state, getting cartItems and error
   const dispatch = useDispatch();
 
-
   useEffect(() => {
+    console.log('useEffect method has been called');
     if (productId) {
+      console.log('Add to cart action has been called');
+      console.log('Product id and quantity in add to cart action', productId, qty);
       dispatch(addToCart(productId, qty));
     }
   }, [dispatch, productId, qty]);
 
   const removeFromCartHandler = (id) => {
-
-    console.log('delete product from cart button clicked');
-
     dispatch(removeFromCart(id));     // to remove product from cart
   };
 
   const checkoutHandler = () => {
-
-    console.log('proceed to checkout button clicked');
-
     props.history.push('/signin?redirect=shipping');
   };
 

@@ -9,7 +9,11 @@ import { PRODUCT_UPDATE_RESET } from '../constants/productConstants';
 
 export default function ProductEditScreen(props) {
 
+  console.log('This is ProductEditScreen');
+
   const productId = props.match.params.id;
+
+  console.log('Product id of editing order is ', productId);
 
   const [name, setName] = useState(' ');
   const [price, setPrice] = useState(' ');
@@ -21,9 +25,13 @@ export default function ProductEditScreen(props) {
 
   const productDetails = useSelector((state) => state.productDetails );
 
+  console.log('ProductDetails comming from redux store', productDetails);
+
   const { loading, error, product } = productDetails;
 
   const productUpdate = useSelector((state)=> state.productUpdate);
+
+  console.log('Updated product comming from redux store', productUpdate);
 
   const { loading: loadingUpdate,
   error: errorUpdate,
@@ -32,7 +40,9 @@ success: successUpdate } = productUpdate;
   const dispatch = useDispatch();
 
   useEffect(()=> {
+    console.log('useEffect method has been called of ProductEditScreen');
     if(successUpdate){
+      console.log('Updated product is true then push it to productLIst api');
       props.history.push('/productlist');
     }
     if(!product || product._id !== productId || successUpdate) {

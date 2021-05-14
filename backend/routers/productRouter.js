@@ -9,6 +9,7 @@ const productRouter = express.Router();
 //router to get all the products which are available in store and send it to frontend api
 
 productRouter.get('/', expressAsyncHandler( async(req, res)=>{
+  console.log('productRouter for getting product from backend has been called');
   const products = await Product.find({});
   res.send(products);
 })
@@ -27,7 +28,8 @@ res.send({ createdProducts });
 
 productRouter.get('/:id', expressAsyncHandler( async (req, res) => {
   const product = await Product.findById(req.params.id);
-
+  console.log('product is comming from backend productRouter.get /:id', product);
+  console.log('productRouter.get /:id has been called');
   if(product) {
     res.send(product);
   }
